@@ -65,7 +65,7 @@ COPY run.sh /etc/services.d/rstudio/run
 
 COPY add-students.sh /usr/local/bin/add-students
 
-RUN wget P /tmp/ https://hub.dataos.io/datahub_1.1.0-1_amd64.deb \
+RUN wget -P /tmp/ https://hub.dataos.io/datahub_1.1.0-1_amd64.deb \
     && dpkg -i /tmp/datahub_1.1.0-1_amd64.deb
 COPY datahub_login.sh /usr/bin/datahub_login.sh
 
