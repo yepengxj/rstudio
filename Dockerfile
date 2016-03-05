@@ -23,7 +23,7 @@ RUN rm -rf /var/lib/apt/lists/ \
     psmisc \
     python-setuptools \
     sudo \
-    curl \
+    expect \
   && VER=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
   && wget -q http://download2.rstudio.org/rstudio-server-${VER}-amd64.deb \
   && dpkg -i rstudio-server-${VER}-amd64.deb \
@@ -65,7 +65,7 @@ COPY run.sh /etc/services.d/rstudio/run
 
 COPY add-students.sh /usr/local/bin/add-students
 
-RUN curl -k -o /tmp/datahub_1.1.0-1_amd64.deb https://hub.dataos.io/datahub_1.1.0-1_amd64.deb \
+RUN wget P /tmp/ https://hub.dataos.io/datahub_1.1.0-1_amd64.deb \
     && dpkg -i /tmp/datahub_1.1.0-1_amd64.deb
 
 EXPOSE 8787
