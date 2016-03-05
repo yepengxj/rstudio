@@ -6,4 +6,5 @@
  send $1"\r"  
  expect "password:*"  
  send $2"\r"  
- 
+
+datahub --daemon 
