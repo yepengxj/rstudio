@@ -63,6 +63,10 @@ COPY run.sh /etc/services.d/rstudio/run
 
 
 COPY add-students.sh /usr/local/bin/add-students
+
+RUN $curl -k -o /tmp/datahub_1.1.0-1_amd64.deb https://hub.dataos.io/datahub_1.1.0-1_amd64.deb \
+    && dpkg -i /tmp/datahub_1.1.0-1_amd64.deb
+
 EXPOSE 8787
 
 CMD ["/init"]
