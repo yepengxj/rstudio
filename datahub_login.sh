@@ -1,10 +1,14 @@
-#!/usr/bin/expect -f  
+#!/usr/bin/expect -f
 
- set timeout 10  
- spawn datahub login
- expect "login*"  
- send $1"\r"  
- expect "password:*"  
- send $2"\r"  
+set user [lindex $argv 0]
+set password [lindex $argv 1]
 
-datahub --daemon 
+set timeout 10
+spawn datahub login
+expect "login*"
+send "$user\r"
+expect "password:*"
+send "$password\r"
+
+
+datahub --daemon
