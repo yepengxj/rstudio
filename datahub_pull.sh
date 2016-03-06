@@ -16,6 +16,6 @@ send "$password\r"
  set timeout 10  
  spawn datahub pull $repo_tag $local_dp
  expect "login*"  
- send $user"\r"  
+ send "$user\r"  
  expect "password:*"  
- send $password"\r"
+ send "$password\r"
