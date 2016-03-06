@@ -15,7 +15,7 @@ RUN rm -rf /var/lib/apt/lists/ \
     ca-certificates \
     file \
     git \
-    libxml2-dev \
+    libxml2-dev libxml2 \
     libapparmor1 \
     libedit2 \
     libcurl4-openssl-dev \
