@@ -1,4 +1,5 @@
 #!/usr/bin/expect -f
+datahub --daemon
 
 set user [lindex $argv 0]
 set password [lindex $argv 1]
@@ -11,4 +12,3 @@ expect "password:*"
 send "$password\r"
 
 
-datahub --daemon
