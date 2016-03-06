@@ -68,7 +68,10 @@ COPY add-students.sh /usr/local/bin/add-students
 
 RUN wget -P /tmp/ https://hub.dataos.io/datahub_1.1.0-1_amd64.deb \
     && dpkg -i /tmp/datahub_1.1.0-1_amd64.deb
-COPY datahub_login.sh /usr/bin/datahub_login.sh
+COPY datahub_login.sh /usr/bin/datahub_login
+COPY datahub_login.sh /usr/bin/datahub_pull
+
+RUN chmod +x /usr/bin/datahub_login /usr/bin/datahub_pull
 
 COPY install_package.R /tmp/install_package.R
 RUN Rscript /tmp/install_package.R
