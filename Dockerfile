@@ -15,6 +15,7 @@ RUN rm -rf /var/lib/apt/lists/ \
     ca-certificates \
     file \
     git \
+    libxml2-dev \
     libapparmor1 \
     libedit2 \
     libcurl4-openssl-dev \
@@ -68,6 +69,9 @@ COPY add-students.sh /usr/local/bin/add-students
 RUN wget -P /tmp/ https://hub.dataos.io/datahub_1.1.0-1_amd64.deb \
     && dpkg -i /tmp/datahub_1.1.0-1_amd64.deb
 COPY datahub_login.sh /usr/bin/datahub_login.sh
+
+COPY install_package.R /tmp/install_package.R
+RUN Rscript /tmp/install_package.R
 
 EXPOSE 8787
 
