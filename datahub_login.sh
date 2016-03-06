@@ -1,14 +1,18 @@
-#!/usr/bin/expect -f
-datahub --daemon
-
-set user [lindex $argv 0]
-set password [lindex $argv 1]
-
-set timeout 10
+#!/bin/bash
+user=$1
+echo "user:"$user
+pass=$2
+echo "pass:"$pass
+VAR=$(expect -c "
 spawn datahub login
-expect "login*"
-send "$user\r"
-expect "password:*"
-send "$password\r"
 
+expect \"*?login:*\"
+send -- \"$user\r\"
+expect \"*?password:*\"
+send -- \"$pass\r\"
+send -- \"\r\"
+expect eof
+")
 
+echo $VAR
+echo "============"
