@@ -1,0 +1,5 @@
+install.packages("XML")
+install.packages("plyr")
+install.packages("ggplot2")
+install.packages("curl")
+install.packages("reshape")
