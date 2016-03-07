@@ -17,6 +17,7 @@ RUN rm -rf /var/lib/apt/lists/ \
     git \
     libxml2-dev libxml2 \
     libapparmor1 \
+    libssl-dev libsasl2-dev \
     libedit2 \
     libcurl4-openssl-dev \
     libssl1.0.0 \
