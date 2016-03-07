@@ -1,4 +1,6 @@
 #!/bin/bash
+
+datahub --daemon
 user=$1
 echo "user:"$user
 pass=$2
