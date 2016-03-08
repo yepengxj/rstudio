@@ -38,3 +38,4 @@ fi
 echo "HTTR_LOCALHOST=$HTTR_LOCALHOST" >> /etc/R/Renviron.site
 echo "HTTR_PORT=$HTTR_PORT" >> /etc/R/Renviron.site
 
+datahub --daemon
