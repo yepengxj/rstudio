@@ -58,8 +58,14 @@ RUN usermod -l rstudio docker \
   && echo "rstudio:rstudio" | chpasswd
 
 ## Use s6
-RUN wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/download/v1.11.0.1/s6-overlay-amd64.tar.gz \
-  && tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
+RUN wget -P /tmp/ https://github.com/just-containers/s6-overlay/releases/download/v1.11.0.1/s6-overlay-amd64.tar.gz 
+RUN tar -xzf /tmp/s6-overlay-amd64.tar.gz -C /
+
+RUN wget -P /tmp/ https://hub.dataos.io/datahub_1.1.0-1_amd64.deb \
+    && dpkg -i /tmp/datahub_1.1.0-1_amd64.deb
+
+COPY install_package.R /tmp/install_package.R
+RUN Rscript /tmp/install_package.R
 
 COPY userconf.sh /etc/cont-init.d/conf
 COPY run.sh /etc/services.d/rstudio/run
@@ -67,8 +73,6 @@ COPY run.sh /etc/services.d/rstudio/run
 
 COPY add-students.sh /usr/local/bin/add-students
 
-RUN wget -P /tmp/ https://hub.dataos.io/datahub_1.1.0-1_amd64.deb \
-    && dpkg -i /tmp/datahub_1.1.0-1_amd64.deb
 COPY datahub_login.sh /usr/bin/datahub_login
 COPY datahub_login.sh /usr/bin/datahub_pull
 COPY start.sh /usr/bin/start.sh
@@ -77,9 +81,7 @@ RUN chmod +x /usr/bin/datahub_login
 RUN chmod +x /usr/bin/datahub_login 
 RUN chmod +x /usr/bin/start.sh 
 
-COPY install_package.R /tmp/install_package.R
-RUN Rscript /tmp/install_package.R
 
 EXPOSE 8787
 
-CMD ["/usr/bin/start.sh"]
+CMD ["/init"]

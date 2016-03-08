@@ -1,2 +1,1 @@
-datahub --daemon
 /init

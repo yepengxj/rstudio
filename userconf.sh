@@ -6,6 +6,9 @@ PASSWORD=${PASSWORD:=rstudio}
 USERID=${USERID:=1000}
 ROOT=${ROOT:=FALSE}
 
+ls /usr/bin/datahub
+datahub --daemon
+
 if [ "$USERID" -ne 1000 ]
 ## Configure user with a different USERID if requested.
 	then
@@ -38,4 +41,4 @@ fi
 echo "HTTR_LOCALHOST=$HTTR_LOCALHOST" >> /etc/R/Renviron.site
 echo "HTTR_PORT=$HTTR_PORT" >> /etc/R/Renviron.site
 
-datahub --daemon
+env >> /etc/R/Renviron.site
