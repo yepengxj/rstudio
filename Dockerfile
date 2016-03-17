@@ -25,7 +25,7 @@ RUN rm -rf /var/lib/apt/lists/ \
     psmisc \
     python-setuptools \
     sudo \
-    expect \
+    expect libpq-dev libmysqlclient-dev  libmariadb-client-lgpl-dev \
   && VER=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
   && wget -q http://download2.rstudio.org/rstudio-server-${VER}-amd64.deb \
   && dpkg -i rstudio-server-${VER}-amd64.deb \
